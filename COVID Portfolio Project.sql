@@ -1,3 +1,4 @@
+-- View the data
 
 SELECT *
 FROM PortolioProject..[Covid-deaths]
@@ -109,8 +110,7 @@ WHERE a.continent is not null AND b.new_vaccinations is not null
 GROUP BY a.location
 ORDER BY 2
 
-
--- View
+-- Creating View
 
 CREATE VIEW PercentPopulationVaccinated as
 SELECT a.continent, a.location, a.date, a.population, b.new_vaccinations, sum(cast(b.new_vaccinations as float)) OVER (PARTITION BY a.location ORDER BY a.Location, a.date) as RollingPeopleVaccinated
